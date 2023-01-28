@@ -35,7 +35,8 @@ david.addOffspring(jeremy);
 angela.addOffspring(karla);
 karla.addOffspring(chandler);
 
+// Test cases:
 // console.log(ada.vampireWithName('Sarah')); //returns Sarah object
 // console.log(ada.totalDescendents); // 15
-console.log(ada.allMillennialVampires); // list of 7
+// console.log(ada.allMillennialVampires); // list of 7
 
