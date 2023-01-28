@@ -1,11 +1,10 @@
-// const Employee = require('./Employee.class');
 const Vampire = require('./Vampire.class');
 
 const ada = new Vampire("Ada", 30);
 
 const craig = new Vampire("Craig", 1950);
 const arvinder = new Vampire("Arvinder", 2021);
-const angela = new Vampire("Angela",  1990);
+const angela = new Vampire("Angela", 1990);
 const karla = new Vampire("Karla", 1999);
 const chandler = new Vampire("Chandler", 2000);
 const phil = new Vampire("Phil", 1091);
@@ -36,5 +35,7 @@ david.addOffspring(jeremy);
 angela.addOffspring(karla);
 karla.addOffspring(chandler);
 
-console.log(ali.vampireWithName(sarah));
+// console.log(ada.vampireWithName('Sarah')); //returns Sarah object
+// console.log(ada.totalDescendents); // 15
+console.log(ada.allMillennialVampires); // list of 7
 

@@ -6,8 +6,6 @@ class Vampire {
     this.creator = null;
   }
 
-  /** Simple tree methods **/
-
   // Adds the vampire as an offspring of this vampire
   addOffspring(vampire) {
     this.offspring.push(vampire);
@@ -52,13 +50,16 @@ class Vampire {
   // Returns the vampire object with that name, or null if no vampire exists with that name
   vampireWithName(name) {
     let myVampire = this;
-    if (myVampire.name === name) {
+    if (myVampire.name === name) { //name matches
+      console.log('found vampire named:', myVampire.name);
       return myVampire;
     }
     for (const subVampire of this.offspring) {
-      const subVamp = subVampire.vampireWithName(subVampire.name);
-      console.log(subVamp)
-      if (subVamp.name === name) {
+      const subVamp = subVampire.vampireWithName(name);
+      // console.log(subVamp)
+
+      if (subVamp) {
+        console.log('found a vampire');
         return subVamp;
       }
     }
@@ -67,28 +68,31 @@ class Vampire {
 
   // Returns the total number of vampires that exist
   get totalDescendents() {
-
+    let totalDescendents = 0; // our counter
+    if (this.offspring.length) {
+      totalDescendents += this.offspring.length;
+    }
+    for (const subVamp of this.offspring) {
+      const vampiresUnder = subVamp.totalDescendents;
+      totalDescendents += vampiresUnder;
+      console.log('totalDescendents:', totalDescendents);
+    }
+    return totalDescendents;
   }
 
   // Returns an array of all the vampires that were converted after 1980
   get allMillennialVampires() {
-
+    let millenialCount = [];
+    if (this.yearConverted > 1980) {
+      millenialCount.push(this.name);
+    }
+    for (const subVamp of this.offspring) {
+      const vampiresUnder = subVamp.allMillennialVampires;
+      millenialCount = millenialCount.concat(vampiresUnder);
+      // console.log(millenialCount);
+    }
+    return millenialCount;
   }
-
-
 }
 
-
-
 module.exports = Vampire;
-
-/** Stretch **/
-
-// Returns the closest common ancestor of two vampires.
-// The closest common anscestor should be the more senior vampire if a direct ancestor is used.
-// For example:
-// * when comparing Ansel and Sarah, Ansel is the closest common anscestor.
-// * when comparing Ansel and Andrew, Ansel is the closest common anscestor.
-// closestCommonAncestor(vampire) {
-
-// }
